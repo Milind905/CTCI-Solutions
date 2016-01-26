@@ -15,6 +15,8 @@ function reverseString(inputStr) {
 		inputStr = inputStr.trim().split('');
 	}
 
+
+
 	var temp;
 	var length = inputStr.length;
 	for (var i = 0; i < Math.floor(length / 2); i++) {
@@ -39,4 +41,3 @@ Analysis
 Space complexity: O(1);
 Time complexity: O(n/2) where n = length of string
 */
-
