@@ -8,3 +8,8 @@
 
 1-4.js
 	Created an extra array where I didn't need one
+
+1-6a.js
+	Did a counter clockwise 90degree rotation instead of clockwise
+1-6b.js
+	No need to add a "completed field" to each matrix value if using Ceil and Floor values

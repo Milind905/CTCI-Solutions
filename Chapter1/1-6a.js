@@ -12,14 +12,17 @@ function rotateMatrix(inputMatrix) {
 	var N = inputMatrix.length;
 	var newMatrix = [];
 
+	if(N <= 1){
+		return inputMatrix;
+	}
+
 	for(var row=0; row<N; row++){
 		newMatrix[row] = [];
 	}
 
 	for(var row=0; row<N; row++){
 		for(var col=0; col<N; col++){
-			//newMatrix[row][col] = inputMatrix[col][N-1-row];
-			newMatrix[col][row] = inputMatrix[N-1-row][col]; //why does this work?
+			newMatrix[row][col] = inputMatrix[N-1-col][row];
 		}
 	}
 
@@ -27,7 +30,7 @@ function rotateMatrix(inputMatrix) {
 }
 
 
-
+//Need more tests
 var matrix = [];
 for(var i=0; i<4; i++) {
     matrix[i] = [];
@@ -38,7 +41,6 @@ for(var i=0; i<4; i++) {
 console.log(matrix);
 console.log();
 console.log(rotateMatrix(matrix));
-
 
 /*
 Analysis
