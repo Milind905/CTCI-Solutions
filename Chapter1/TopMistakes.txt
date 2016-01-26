@@ -1,3 +1,0 @@
-1-1.js
-	Forgot to intialize all charArr values to 0
-	Forgot to check for null input, empty string, string with 1 character, string with whitespaces on the ends

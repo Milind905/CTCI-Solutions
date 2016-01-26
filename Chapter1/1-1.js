@@ -45,3 +45,9 @@ console.log(allUnique("The quick brown fox jumps over the lazy dog")); //False
 console.log(allUnique("Thequickbrownfoxjumpsoverthelazydog")); //False
 console.log(allUnique("Cwm fjordbank glyphs vext quiz")); //False
 console.log(allUnique("abcdefghijklmnopqrstuvwxyz")); //True
+
+/*
+Analysis
+Space complexity: O(256);
+Time complexity: O(n) where n = length of string
+*/
