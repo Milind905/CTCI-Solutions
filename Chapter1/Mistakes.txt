@@ -4,4 +4,7 @@
 
 1-2.js
 	Didn't convert string to array, Strings are immutable!!
-	Also when getting last element, do (length-1)
+	When getting last element of array, do (length-1)
+
+1-4.js
+	Created an extra array where I didn't need one
