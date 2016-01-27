@@ -13,3 +13,6 @@
 	Did a counter clockwise 90degree rotation instead of clockwise
 1-6b.js
 	No need to add a "completed field" to each matrix value if using Ceil and Floor values
+
+1-8.js
+	Split s2 into an array before finding rotate which is unnecessary
