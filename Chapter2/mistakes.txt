@@ -1,0 +1,3 @@
+2-1a.js
+	Forgot to add to the list inside while loop
+	Should be implemented with a hash table!
