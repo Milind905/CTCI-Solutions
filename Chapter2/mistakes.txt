@@ -3,4 +3,6 @@
 	Should be implemented with a hash table!
 2-2.js
 	Instead of returning the kth last element, was returning (k-1)th last element
+2-3.js
+	If deleting the last node, setting it to null doesn't work;
 	

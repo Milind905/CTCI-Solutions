@@ -25,7 +25,6 @@ function kLastNode(head, k) {
 	if (k > length) {
 		throw ("Must specify a lower K value");
 	}
-	console.log("length: "+length);
 	for (var counter = 0; counter < (length - k); counter++) {
 		node = node.next;
 	}
