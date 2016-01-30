@@ -12,48 +12,53 @@ My clarification questions and assumptions
 var LinkedList = require("../DataStructures/SinglyLinkedList.js");
 
 
-function removeDuplicates(head) {
-	if (head.data === null) {
-		return head;
+function removeDuplicates(list) {
+	if (list.head === null) {
+		return;
 	}
-
-	var list = [];
-	list.push(head.data);
-	var node = head;
+	var node = list.head;
+	var myList = [];
+	myList.push(node.data);
 
 	while (node.next !== null) {
-		if (list.indexOf(node.next.data) > -1) {
+		if (myList.indexOf(node.next.data) > -1) {
 			node.next = node.next.next;
 		} else {
-			list.push(node.next.data);
+			myList.push(node.next.data);
 			node = node.next;
 		}
 	}
-	return head;
 }
 
 
 
-var head = new LinkedList(15);
-head.appendToTail(14);
-head.appendToTail(290);
-head.appendToTail(544);
-head.appendToTail(-1);
-head.appendToTail(0);
-head.appendToTail(14);
-console.log(head.toString());
-console.log(removeDuplicates(head).toString());
+var list = new LinkedList();
+list.append(15);
+list.append(14);
+list.append(290);
+list.append(544);
+list.append(-1);
+list.append(0);
+list.append(14);
+console.log(list.toString());
+removeDuplicates(list);
+console.log(list.toString());
 
-var head = new LinkedList(5);
-head.appendToTail(4);
-head.appendToTail(5);
-head.appendToTail(4);
-head.appendToTail(4);
-head.appendToTail(3);
-console.log(head.toString());
-console.log(removeDuplicates(head).toString());
+list = new LinkedList();
+list.append(5);
+list.append(4);
+list.append(5);
+list.append(4);
+list.append(4);
+list.append(3);
+console.log(list.toString());
+removeDuplicates(list);
+console.log(list.toString());
 
-
+list = new LinkedList();
+console.log(list.toString());
+removeDuplicates(list);
+console.log(list.toString());
 /*
 Analysis
 Space complexity: O(n) where n = length of linked list

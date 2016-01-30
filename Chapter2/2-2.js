@@ -6,41 +6,38 @@ Implement an algorithm to find the kth to last element of a singly linked list.
 /*
 My clarification questions and assumptions
 1) Is it a circular linked list? No
+2) Can I use the length property? Yes
 */
 var LinkedList = require("../DataStructures/SinglyLinkedList.js");
 
-function kLastNode(head, k) {
+function kthLastNode(list, k) {
 	if (k <= 0) {
-		throw ("K must be a non-zero positive integer");
+		throw new Error("K must be a non-zero positive integer");
+	}
+	if (k > list.length) {
+		return null;
+	}
+	if (list.head === null) {
+		return null;
 	}
 
-	var length = 0;
-	var node = head;
-	while (node !== null) {
-		length += 1;
-		node = node.next;
-	}
-
-	node = head;
-	if (k > length) {
-		throw ("Must specify a lower K value");
-	}
-	for (var counter = 0; counter < (length - k); counter++) {
+	node = list.head;
+	for (var counter = 0; counter < (list.length - k); counter++) {
 		node = node.next;
 	}
 	return node.data;
 }
 
-var head = new LinkedList(15);
-head.appendToTail(14);
-head.appendToTail(290);
-head.appendToTail(544);
-head.appendToTail(-1);
-head.appendToTail(0);
-head.appendToTail(14);
-console.log(head.toString());
-console.log(kLastNode(head, 4));
-
+var list = new LinkedList();
+list.append(15);
+list.append(14);
+list.append(290);
+list.append(544);
+list.append(-1);
+list.append(0);
+list.append(14);
+console.log(list.toString());
+console.log(kthLastNode(list, 4));
 
 /*
 Analysis

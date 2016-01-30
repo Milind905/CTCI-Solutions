@@ -13,54 +13,59 @@ My clarification questions and assumptions
 var LinkedList = require("../DataStructures/SinglyLinkedList.js");
 
 
-function removeDuplicates(head) {
-	if (head.data === null) {
-		return head;
+function removeDuplicates(list) {
+	if (list.head === null) {
+		return;
 	}
 
-	var p1 = head;
-	var p2 = head;
+	var p1 = list.head;
+	var p2 = list.head;
 
-	while(p1.next !== null){
+	while (p1.next !== null) {
 		p2 = p1.next;
-		if(p2.data === p1.data){
+		if (p2.data === p1.data) {
 			p1.next = p2.next;
-		}
-		else {
-			while(p2.next !== null){
-				if(p2.next.data === p1.data){
+		} else {
+			while (p2.next !== null) {
+				if (p2.next.data === p1.data) {
 					p2.next = p2.next.next;
-				}
-				else {
+				} else {
 					p2 = p2.next;
 				}
 			}
 			p1 = p1.next;
 		}
 	}
-	return head;
 }
 
 
+var list = new LinkedList();
+list.append(15);
+list.append(14);
+list.append(290);
+list.append(544);
+list.append(-1);
+list.append(0);
+list.append(14);
+console.log(list.toString());
+removeDuplicates(list);
+console.log(list.toString());
 
-var head = new LinkedList(15);
-head.appendToTail(14);
-head.appendToTail(290);
-head.appendToTail(544);
-head.appendToTail(-1);
-head.appendToTail(0);
-head.appendToTail(14);
-console.log(head.toString());
-console.log(removeDuplicates(head).toString());
+list = new LinkedList();
+list.append(5);
+list.append(4);
+list.append(5);
+list.append(4);
+list.append(4);
+list.append(3);
+console.log(list.toString());
+removeDuplicates(list);
+console.log(list.toString());
 
-var head = new LinkedList(5);
-head.appendToTail(4);
-head.appendToTail(5);
-head.appendToTail(4);
-head.appendToTail(4);
-head.appendToTail(3);
-console.log(head.toString());
-console.log(removeDuplicates(head).toString());
+list = new LinkedList();
+console.log(list.toString());
+removeDuplicates(list);
+console.log(list.toString());
 
 
 /*
