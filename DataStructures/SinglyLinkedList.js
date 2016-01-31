@@ -57,14 +57,14 @@ Search for a node based on its position (0-based) and return its data
 Time Complexity: O(length)
 */
 SinglyLinkedList.prototype.searchForNode = function(position) {
-	if(position < 0){
+	if (position < 0) {
 		throw new Error("Position must be a positive integer");
 	}
-	if(position >= this.length){
+	if (position >= this.length) {
 		return null;
 	}
 	var node = this.head;
-	for(var i=0; i<position; i++){
+	for (var i = 0; i < position; i++) {
 		node = node.next;
 	}
 	return node;
@@ -74,23 +74,22 @@ SinglyLinkedList.prototype.searchForNode = function(position) {
 Print the LinkedList in an easy to read format
 Time Complexity: O(length)
 */
-SinglyLinkedList.prototype.toString = function(){
+SinglyLinkedList.prototype.toString = function() {
 	var node = this.head;
 	var outputString = "";
-	if(this.head === null){
+	if (this.head === null) {
 		return "Empty";
 	}
 
-	while(node !== null) {
-		if(node.next === null){
-			outputString += "["+node.data+"]";
-		}
-		else {
-			outputString += "["+node.data+"]-->";
+	while (node !== null) {
+		if (node.next === null) {
+			outputString += "[" + node.data + "]";
+		} else {
+			outputString += "[" + node.data + "]-->";
 		}
 		node = node.next;
 	}
 	return outputString;
-}
+};
 
 module.exports = SinglyLinkedList;
