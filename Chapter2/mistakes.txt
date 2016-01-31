@@ -4,5 +4,10 @@
 2-2.js
 	Instead of returning the kth last element, was returning (k-1)th last element
 2-3.js
-	If deleting the last node, setting it to null doesn't work;
+	If deleting the last node, setting it to null doesn't work
+	Must check to see if input is of type Node
+2-4.js
+	**The last node of the lessThan linked list must be obtained by iterating through array
+		- Simply creating a new node of the same data does not provide a refence to the end of the linked list
+		- Caused an error during the part where the two lists are being merged (doesn't actually merge)
 	

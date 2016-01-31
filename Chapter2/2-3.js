@@ -19,7 +19,7 @@ function deleteNode(n) {
 		throw new Error("Input must be a node");
 	}
 
-	//Only issue is, the length of the linkedlist will be wrong now!
+	//Only issue is, the length of the linkedlist will be wrong now
 	if (n.next === null) {
 		n = null;
 		return true;

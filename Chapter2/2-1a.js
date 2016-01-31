@@ -23,6 +23,7 @@ function removeDuplicates(list) {
 	while (node.next !== null) {
 		if (myList.indexOf(node.next.data) > -1) {
 			node.next = node.next.next;
+			list.length--;
 		} else {
 			myList.push(node.next.data);
 			node = node.next;
@@ -40,9 +41,9 @@ list.append(544);
 list.append(-1);
 list.append(0);
 list.append(14);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 
 list = new LinkedList();
 list.append(5);
@@ -51,14 +52,14 @@ list.append(5);
 list.append(4);
 list.append(4);
 list.append(3);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 
 list = new LinkedList();
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 /*
 Analysis
 Space complexity: O(n) where n = length of linked list

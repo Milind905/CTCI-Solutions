@@ -25,10 +25,12 @@ function removeDuplicates(list) {
 		p2 = p1.next;
 		if (p2.data === p1.data) {
 			p1.next = p2.next;
+			list.length--;
 		} else {
 			while (p2.next !== null) {
 				if (p2.next.data === p1.data) {
 					p2.next = p2.next.next;
+					list.length--;
 				} else {
 					p2 = p2.next;
 				}
@@ -47,9 +49,9 @@ list.append(544);
 list.append(-1);
 list.append(0);
 list.append(14);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 
 list = new LinkedList();
 list.append(5);
@@ -58,14 +60,14 @@ list.append(5);
 list.append(4);
 list.append(4);
 list.append(3);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 
 list = new LinkedList();
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
-console.log(list.toString());
+console.log(list.toString(), "length: ", list.length);
 
 
 /*

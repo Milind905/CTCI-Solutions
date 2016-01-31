@@ -67,7 +67,7 @@ SinglyLinkedList.prototype.searchForNode = function(position) {
 	for(var i=0; i<position; i++){
 		node = node.next;
 	}
-	return node.data;
+	return node;
 };
 
 /*
