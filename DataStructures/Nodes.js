@@ -7,4 +7,8 @@ function Node(d) {
 	this.data = d;
 }
 
+Node.prototype.toString = function() {
+	return "["+this.data+"]";
+}
+
 module.exports = Node;

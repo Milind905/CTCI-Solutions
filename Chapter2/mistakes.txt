@@ -10,4 +10,6 @@
 	**The last node of the lessThan linked list must be obtained by iterating through array
 		- Simply creating a new node of the same data does not provide a refence to the end of the linked list
 		- Caused an error during the part where the two lists are being merged (doesn't actually merge)
+2-5b.js
+	In sumStacks function, cannot iterate over longer.length because its length changes as items are popped
 	
