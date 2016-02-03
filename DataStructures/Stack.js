@@ -26,6 +26,30 @@ Stack.prototype.pop = function() {
 	return cTop;
 };
 
+Stack.prototype.popBottom = function() {
+	var node = this.top;
+	var parent = null;
+
+	if(node === null){
+		return null;
+	}
+
+	while(node.next !== null) {
+		parent = node;
+		node = node.next;
+	}
+
+	if(!parent) {
+		this.top = null;
+	}
+	else {
+		parent.next = null;
+	}
+	this.length--;
+
+	return node;
+};
+
 Stack.prototype.peek = function() {
 	if (this.top) {
 		return this.top.data;

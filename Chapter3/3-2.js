@@ -79,3 +79,9 @@ myStack.pop();
 myStack.pop();
 console.log(myStack.toString());
 console.log(myStack.getMin().toString());
+
+/*
+Analysis
+Space complexity: O(N) where N is the size of the original stack
+Time complexity: O(1)
+*/
