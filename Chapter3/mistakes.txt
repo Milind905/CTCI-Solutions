@@ -1,0 +1,6 @@
+3-3.js
+	- Huge mistake in implementation, I had top and length parameters on my setOfStacks
+		- Made everything so much harder and complicated
+		- Instead just check if the current stack is empty and if so move to the prev one
+3-5.js
+	- Forgetting to add return statements

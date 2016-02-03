@@ -30,19 +30,18 @@ Stack.prototype.popBottom = function() {
 	var node = this.top;
 	var parent = null;
 
-	if(node === null){
+	if (node === null) {
 		return null;
 	}
 
-	while(node.next !== null) {
+	while (node.next !== null) {
 		parent = node;
 		node = node.next;
 	}
 
-	if(!parent) {
+	if (!parent) {
 		this.top = null;
-	}
-	else {
+	} else {
 		parent.next = null;
 	}
 	this.length--;
@@ -59,17 +58,16 @@ Stack.prototype.peek = function() {
 };
 
 Stack.prototype.toString = function() {
-	if(!this.top){
+	if (!this.top) {
 		return "Empty";
 	}
 	var returnString = "";
 	var node = this.top;
 
-	while(node){
-		if(node.next){
-			returnString += node.data+"-->";
-		}
-		else {
+	while (node) {
+		if (node.next) {
+			returnString += node.data + "-->";
+		} else {
 			returnString += node.data;
 		}
 		node = node.next;

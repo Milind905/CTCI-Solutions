@@ -57,6 +57,9 @@ setOfStacks.prototype.pop = function() {
 	return prevNode;
 };
 
+/*
+	Time Complexity O(L) where L is the number of stacks
+*/
 setOfStacks.prototype.popAt = function (index) {
 	this.stackArray[index].pop();
 	
@@ -101,7 +104,7 @@ setOfStacks.prototype.toString = function() {
 	return returnString;
 };
 
-/*var mySet = new setOfStacks();
+var mySet = new setOfStacks();
 mySet.push();
 mySet.pop();
 console.log(mySet.toString());
@@ -133,5 +136,5 @@ mySet.push(25);
 console.log(mySet.toString());
 mySet.push(26);
 console.log(mySet.toString());
-console.log(mySet.peek());*/
+console.log(mySet.peek());
 
