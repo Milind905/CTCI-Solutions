@@ -4,3 +4,5 @@
 		- Instead just check if the current stack is empty and if so move to the prev one
 3-5.js
 	- Forgetting to add return statements
+3-6.js
+	- Instead of checking with node.data, kept checking with node itself (resulting in incorrect stacks)

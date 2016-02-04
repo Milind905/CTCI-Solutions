@@ -30,6 +30,14 @@ Queue.prototype.dequeue = function() {
 	}
 };
 
+Queue.prototype.isEmpty = function() {
+	if (!this.head) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
 Queue.prototype.toString = function() {
 	if (this.length === 0) {
 		return "Empty";
