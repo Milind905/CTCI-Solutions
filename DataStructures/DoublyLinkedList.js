@@ -39,23 +39,23 @@ DoublyLinkedList.prototype.remove = function(data) {
 	if (this.head.data === data) {
 		toRemove = this.head;
 		this.head = this.head.next;
-		if(this.head === null) {
+		if (this.head === null) {
 			this.tail = null;
 		} else {
 			this.head.prev = null;
 		}
-	} else if(this.tail.data === data) {
+	} else if (this.tail.data === data) {
 		toRemove = this.tail;
 		this.tail = this.tail.prev;
-		if(this.tail === null) {
+		if (this.tail === null) {
 			this.head = null;
 		} else {
 			this.tail.next = null;
 		}
 	} else {
 		var node = this.head;
-		while(node !== null){
-			if(node.data === data) {
+		while (node !== null) {
+			if (node.data === data) {
 				toRemove = node;
 				var prevNode = node.prev;
 				var nextNode = node.next;
@@ -67,7 +67,7 @@ DoublyLinkedList.prototype.remove = function(data) {
 	}
 
 	this.length--;
-	if(toRemove !== null){
+	if (toRemove !== null) {
 		return toRemove.data;
 	} else {
 		return null;
