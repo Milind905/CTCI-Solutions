@@ -37,5 +37,5 @@ console.log(spaceToToken("The quick brown fox jumps over the lazy dog"));
 /*
 Analysis
 Space complexity: O(1);
-Time complexity: O(n) where n = length of string (assuming split and join take O(n) time)
+Time complexity: O(n) where n = length of string (split and join take O(n) time)
 */

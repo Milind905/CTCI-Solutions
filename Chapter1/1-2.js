@@ -15,8 +15,6 @@ function reverseString(inputStr) {
 		inputStr = inputStr.trim().split('');
 	}
 
-
-
 	var temp;
 	var length = inputStr.length;
 	for (var i = 0; i < Math.floor(length / 2); i++) {
@@ -39,5 +37,5 @@ console.log(reverseString("Cwm fjordbank glyphs vext quiz"));
 /*
 Analysis
 Space complexity: O(1);
-Time complexity: O(n/2) where n = length of string
+Time complexity: O(n) where n = length of string
 */

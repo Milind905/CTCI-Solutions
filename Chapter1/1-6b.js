@@ -23,8 +23,8 @@ function rotateMatrix90(inputMatrix) {
 			var popped = inputMatrix[row][col];
 			inputMatrix[row][col] = inputMatrix[N - 1 - col][row];
 			inputMatrix[N - 1 - col][row] = inputMatrix[N - 1 - row][N - 1 - col];
-			inputMatrix[N - 1 - row][N - 1 - col] = inputMatrix[col][N-1-row];
-			inputMatrix[col][N-1-row] = popped;
+			inputMatrix[N - 1 - row][N - 1 - col] = inputMatrix[col][N - 1 - row];
+			inputMatrix[col][N - 1 - row] = popped;
 		}
 	}
 	return inputMatrix;

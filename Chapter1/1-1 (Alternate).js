@@ -14,7 +14,7 @@ var Hashtable = require("../DataStructures/HashTableChaining.js");
 
 //So this doesn't work with my hashtable (bad hashfunction?) but will work 
 //with something like Java's HashSet
-function allUnique(inputStr){
+function allUnique(inputStr) {
 
 	var myHashtable = new Hashtable(inputStr.length);
 	if (!inputStr || inputStr.length <= 1) {
@@ -24,7 +24,7 @@ function allUnique(inputStr){
 	for (var i = 0; i < inputStr.length; i++) {
 		var key = inputStr[i].charCodeAt(0);
 		var index = myHashtable.hashInsert(key);
-		if(myHashtable.checkLinkedListLength(index) > 1){
+		if (myHashtable.checkLinkedListLength(index) > 1) {
 			return false;
 		}
 	}

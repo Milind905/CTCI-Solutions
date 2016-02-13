@@ -9,7 +9,7 @@ My clarification questions and assumptions
 */
 
 function setZero(inputMatrix) {
-	if(!inputMatrix || inputMatrix.length === 0) {
+	if (!inputMatrix || inputMatrix.length === 0) {
 		return inputMatrix;
 	}
 
@@ -18,23 +18,23 @@ function setZero(inputMatrix) {
 	var rowArray = [];
 	var colArray = [];
 
-	for(var row=0; row<M; row++){
-		for(var col=0; col<N; col++){
-			if(inputMatrix[row][col] === 0){
+	for (var row = 0; row < M; row++) {
+		for (var col = 0; col < N; col++) {
+			if (inputMatrix[row][col] === 0) {
 				rowArray.push(row);
 				colArray.push(col);
 			}
 		}
 	}
-	
-	for(var i=0; i<rowArray.length; i++){
-		for(var col=0; col<N; col++){
+
+	for (var i = 0; i < rowArray.length; i++) {
+		for (var col = 0; col < N; col++) {
 			inputMatrix[rowArray[i]][col] = 0;
 		}
 	}
 
-	for(var i=0; i<colArray.length; i++){
-		for(var row=0; row<M; row++){
+	for (var i = 0; i < colArray.length; i++) {
+		for (var row = 0; row < M; row++) {
 			inputMatrix[row][colArray[i]] = 0;
 		}
 	}
@@ -59,5 +59,5 @@ console.log(setZero(matrix));
 /*
 Analysis
 Space complexity: O(M*N) where M = #rows and N= #columns 
-Time complexity: O(M*N) - Probably not the best solution :/
+Time complexity: O(M*N)
 */

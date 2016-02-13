@@ -41,5 +41,5 @@ console.log(isRotation("abcd ef", "cd  efab"));
 /*
 Analysis
 Space complexity: O(1)
-Time complexity: O(1) - Assuming isSubstring runs in constant time (which it doesn't)
+Time complexity: O(n) - indexOf runs in linear time
 */

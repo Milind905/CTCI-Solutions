@@ -26,10 +26,10 @@ function isPermutation(a, b) {
 	for (var i = 0; i < 256; i++) {
 		aChars[i] = 0;
 	}
+
 	for (var i = 0; i < a.length; i++) {
 		aChars[a[i].charCodeAt(0)]++;
 	}
-
 
 	for (var i = 0; i < b.length; i++) {
 		aChars[b[i].charCodeAt(0)]--;
@@ -39,7 +39,6 @@ function isPermutation(a, b) {
 	}
 
 	return true;
-
 }
 
 //Need to implement some sort of testing framework
@@ -54,6 +53,6 @@ console.log(isPermutation("Thequickbrownfoxjumpsoverthelazydog", "The quick brow
 
 /*
 Analysis
-Space complexity O(256): 
-Time complexity Max( O(n) | O(256) ) where n = a.length; 
+Space complexity O(256)
+Time complexity O(256) 
 */

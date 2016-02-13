@@ -51,6 +51,6 @@ console.log(compressString("aabcccccaaa"));
 
 /*
 Analysis
-Space complexity: O(1) 
+Space complexity: O(2n) where n is the length of the string
 Time complexity: O(n) where n is the length of the string
 */
