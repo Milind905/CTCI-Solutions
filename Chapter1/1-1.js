@@ -17,8 +17,6 @@ function allUnique(inputStr) {
 
 	if (!inputStr || inputStr.length <= 1) {
 		return true;
-	} else {
-		inputStr = inputStr.trim();
 	}
 
 	for (var i = 0; i < 256; i++) {
@@ -39,7 +37,7 @@ function allUnique(inputStr) {
 console.log(allUnique()); //True
 console.log(allUnique("a")); //True
 console.log(allUnique("AaBbCc")); //True
-console.log(allUnique("AaBbCc  ")); //True
+console.log(allUnique("AaBbCc  ")); //False
 console.log(allUnique("aabbcc")); //False
 console.log(allUnique("The quick brown fox jumps over the lazy dog")); //False
 console.log(allUnique("Thequickbrownfoxjumpsoverthelazydog")); //False
