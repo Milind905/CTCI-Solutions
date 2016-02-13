@@ -19,11 +19,11 @@ function sortAscendingStack(unsortedStack) {
 
 	while (unsortedStack.length !== 0) {
 		if (sortedStack.length === 0) {
-			sortedStack.push(unsortedStack.pop());
+			sortedStack.push(unsortedStack.pop().data);
 		} else {
-			var temp = unsortedStack.pop();
-			while (sortedStack.top && sortedStack.top.data >  temp){
-				unsortedStack.push(sortedStack.pop());
+			var temp = unsortedStack.pop().data;
+			while (sortedStack.top && sortedStack.top.data > temp) {
+				unsortedStack.push(sortedStack.pop().data);
 			}
 			sortedStack.push(temp);
 		}

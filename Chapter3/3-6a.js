@@ -32,11 +32,11 @@ maxStack.prototype.push = function(data) {
 	var current = this.stack1.top;
 	while (current !== null && current.data > data) {
 		current = current.next;
-		this.stack2.push(this.stack1.pop());
+		this.stack2.push(this.stack1.pop().data);
 	}
 	this.stack1.push(data);
 	while (this.stack2.top !== null) {
-		this.stack1.push(this.stack2.pop());
+		this.stack1.push(this.stack2.pop().data);
 	}
 };
 
@@ -54,11 +54,11 @@ maxStack.prototype.pop = function() {
 /*
 Time Complexity: O(1)
 */
-maxStack.prototype.peek = function(first_argument) {
+maxStack.prototype.peek = function() {
 	if (this.isEmpty()) {
 		return "EMPTY";
 	} else {
-		return this.stack1.top.data;
+		return this.stack1.top;
 	}
 };
 
@@ -93,16 +93,16 @@ myMaxStack.push(17);
 myMaxStack.push(5);
 console.log(myMaxStack.toString());
 console.log(myMaxStack.isEmpty());
-console.log(myMaxStack.peek());
+console.log(myMaxStack.peek().toString());
 myMaxStack.pop()
-console.log(myMaxStack.peek());
+console.log(myMaxStack.peek().toString());
 myMaxStack.pop()
 console.log(myMaxStack.toString());
 console.log(myMaxStack.isEmpty());
 myMaxStack.pop()
 myMaxStack.pop()
 myMaxStack.pop()
-console.log(myMaxStack.peek());
+console.log(myMaxStack.peek().toString());
 console.log(myMaxStack.isEmpty());
 
 /*

@@ -28,11 +28,11 @@ Time Complexity: O(2n) where n is the number of elements in the queue
 */
 stacksAsQueue.prototype.dequeue = function() {
 	while (this.stack1.top !== null) {
-		this.stack2.push(this.stack1.pop());
+		this.stack2.push(this.stack1.pop().data);
 	}
 	var toReturn = this.stack2.pop();
 	while (this.stack2.top !== null) {
-		this.stack1.push(this.stack2.pop());
+		this.stack1.push(this.stack2.pop().data);
 	}
 	return toReturn;
 };
@@ -47,11 +47,11 @@ stacksAsQueue.prototype.toString = function() {
 	}
 
 	while (this.stack1.top !== null) {
-		this.stack2.push(this.stack1.pop());
+		this.stack2.push(this.stack1.pop().data);
 	}
 	returnString = this.stack2.toString();
 	while (this.stack2.top !== null) {
-		this.stack1.push(this.stack2.pop());
+		this.stack1.push(this.stack2.pop().data);
 	}
 	return returnString;
 };
@@ -64,9 +64,10 @@ console.log(myQueue.toString());
 myQueue.enqueue(4);
 myQueue.enqueue(5);
 myQueue.enqueue(6);
-console.log(myQueue.dequeue());
-console.log(myQueue.dequeue());
-console.log(myQueue.dequeue());
+console.log(myQueue.toString());
+console.log(myQueue.dequeue().toString());
+console.log(myQueue.dequeue().toString());
+console.log(myQueue.dequeue().toString());
 console.log(myQueue.toString());
 
 /*

@@ -16,16 +16,27 @@ var Queue = require("../DataStructures/Queue");
 const CAT = "CAT";
 const DOG = "DOG";
 
+/*
+An Animal object, stores data/name, and when it was added
+as well as a reference to the next animal in the queue
+*/
 function Animal(data, added) {
 	this.data = data;
 	this.next = null;
 	this.added = added;
 }
 
+/*
+Prints the name/data of the animal
+Time Complexity: O(1)
+*/
 Animal.prototype.toString = function() {
 	return "[" + this.data + "]";
 };
 
+/*
+A Queue which uses Animal types instead of nodes
+*/
 animalQueue.prototype = new Queue();
 
 function animalQueue() {
@@ -34,6 +45,10 @@ function animalQueue() {
 	this.length = 0;
 }
 
+/*
+Add new Animal to the queue
+Time Complexity: O(1)
+*/
 animalQueue.prototype.enqueue = function(data, added) {
 	if (!data || !added) {
 		throw new Error("No data or date added");
@@ -49,12 +64,22 @@ animalQueue.prototype.enqueue = function(data, added) {
 	this.length++;
 };
 
+/*
+Main data structure for holding cats and dogs
+Space Complexity: O(n) where n is the number of animals
+*/
 function AnimalShelter() {
 	this.dogQueue = new animalQueue();
 	this.catQueue = new animalQueue();
 	this.number = 0;
 }
 
+/*
+Adds the animal to either the catQueue or the dogQueue
+depending on the type of the animal. Also assigns an 
+added date to the animal.
+Time Complexity: O(1)
+*/
 AnimalShelter.prototype.enqueue = function(data, type) {
 	if (!data || !type) {
 		throw new Error("No data or type");
@@ -71,6 +96,11 @@ AnimalShelter.prototype.enqueue = function(data, type) {
 	}
 };
 
+/*
+Removes either a cat or a dog depending on which animal
+was added first
+Time Complexity: O(1)
+*/
 AnimalShelter.prototype.dequeueAny = function() {
 	if (this.dogQueue.isEmpty() && this.catQueue.isEmpty()) {
 		return "EMPTY";
@@ -87,6 +117,10 @@ AnimalShelter.prototype.dequeueAny = function() {
 	}
 };
 
+/*
+Removes the first cat in the queue
+Time Complexity: O(1)
+*/
 AnimalShelter.prototype.dequeueCat = function() {
 	if (this.catQueue.isEmpty()) {
 		return "EMPTY";
@@ -95,6 +129,10 @@ AnimalShelter.prototype.dequeueCat = function() {
 	}
 };
 
+/*
+Removes the first dog in the queue
+Time Complexity: O(1)
+*/
 AnimalShelter.prototype.dequeueDog = function() {
 	if (this.dogQueue.isEmpty()) {
 		return "EMPTY";
@@ -103,13 +141,16 @@ AnimalShelter.prototype.dequeueDog = function() {
 	}
 };
 
+/*
+Prints the AnimalShelter object in an easy to read format
+*/
 AnimalShelter.prototype.toString = function() {
 	var returnString = "";
 
-	returnString += "catQueue: "+this.catQueue.toString()+"\n";
-	returnString += "dogQueue: "+this.dogQueue.toString();
+	returnString += "catQueue: " + this.catQueue.toString() + "\n";
+	returnString += "dogQueue: " + this.dogQueue.toString();
 	return returnString;
-}
+};
 
 
 var myNewAnimalShelter = new AnimalShelter();
@@ -123,13 +164,22 @@ myNewAnimalShelter.enqueue("D1", DOG);
 myNewAnimalShelter.enqueue("C3", CAT);
 myNewAnimalShelter.enqueue("D2", DOG);
 console.log(myNewAnimalShelter.toString());
-console.log(myNewAnimalShelter.dequeueAny());
-console.log(myNewAnimalShelter.dequeueAny());
-console.log(myNewAnimalShelter.dequeueAny());
-console.log(myNewAnimalShelter.dequeueAny());
-console.log(myNewAnimalShelter.dequeueAny());
+console.log(myNewAnimalShelter.dequeueAny().toString());
+console.log(myNewAnimalShelter.dequeueAny().toString());
+console.log(myNewAnimalShelter.dequeueAny().toString());
+console.log(myNewAnimalShelter.dequeueAny().toString());
+console.log(myNewAnimalShelter.dequeueAny().toString());
 console.log(myNewAnimalShelter.toString());
-
+myNewAnimalShelter.enqueue("C1", CAT);
+myNewAnimalShelter.enqueue("C2", CAT);
+myNewAnimalShelter.enqueue("D1", DOG);
+myNewAnimalShelter.enqueue("C3", CAT);
+myNewAnimalShelter.enqueue("D2", DOG);
+console.log(myNewAnimalShelter.toString());
+console.log(myNewAnimalShelter.dequeueCat().toString());
+console.log(myNewAnimalShelter.dequeueDog().toString());
+console.log(myNewAnimalShelter.dequeueAny().toString());
+console.log(myNewAnimalShelter.toString());
 
 
 /*

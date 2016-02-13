@@ -18,6 +18,11 @@ function diffStack() {
 	this.minStack = new Stack();
 }
 
+/*
+Push new item to top of the stack
+If new item is smaller than minStack, also push it to the minStack
+Time Complexity: O(1)
+*/
 diffStack.prototype.push = function(data) {
 	var cTop = this.top;
 	var newTop = new Node(data);
@@ -28,34 +33,41 @@ diffStack.prototype.push = function(data) {
 
 	if (this.minStack.top === null) {
 		this.minStack.push(newTop.data);
-	} else {
-		if (newTop.data <= this.minStack.top.data) {
-			this.minStack.push(newTop.data);
-		}
+	} else if (newTop.data <= this.minStack.top.data) {
+		this.minStack.push(newTop.data);
 	}
 };
 
+/*
+Pop item at top of stack
+If popped item is also in the minStack, pop it from the minStack
+Time Complexity: O(1)
+*/
 diffStack.prototype.pop = function() {
 	if (this.top === null) {
 		return null;
 	}
 
-	var cTop = this.top.data;
+	var cTop = this.top;
 	this.top = this.top.next;
 	this.length--;
 
-	if (cTop === this.minStack.top.data) {
+	if (cTop.data === this.minStack.top.data) {
 		this.minStack.pop();
 	}
 
 	return cTop;
 };
 
+/*
+Peek the minimum item of the stack
+Time Complexity: O(1)
+*/
 diffStack.prototype.getMin = function() {
 	if (this.top === null) {
 		return null;
 	}
-	return this.minStack.top.data;
+	return this.minStack.top;
 };
 
 var myStack = new diffStack();
@@ -79,9 +91,3 @@ myStack.pop();
 myStack.pop();
 console.log(myStack.toString());
 console.log(myStack.getMin().toString());
-
-/*
-Analysis
-Space complexity: O(N) where N is the size of the original stack
-Time complexity: O(1)
-*/

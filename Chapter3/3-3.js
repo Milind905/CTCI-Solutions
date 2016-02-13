@@ -5,7 +5,7 @@ Therefore, in real life, we would likely start a new stack when the previous sta
 exceeds some threshold. Implement a data structure SetOf Stacks that mimics
 this. SetOf Stacks should be composed of several stacks and should create a
 new stack once the previous one exceeds capacity. SetOf Stacks. push() and
-SetOf Stacks. pop() should behave identically to a single stack (that is, popO
+SetOf Stacks. pop() should behave identically to a single stack (that is, pop()
 should return the same values as it would if there were just a single stack).
 Also Implement a function popAt(int index) which performs a pop operation on
 a specific sub-stack.
@@ -50,27 +50,27 @@ setOfStacks.prototype.pop = function() {
 	}
 
 	var prevNode = this.stackArray[this.currentIndex].pop();
-	if(this.stackArray[this.currentIndex].top === null){
+	if (this.stackArray[this.currentIndex].top === null) {
 		this.currentIndex--;
 	}
-	
+
 	return prevNode;
 };
 
 /*
 	Time Complexity O(L) where L is the number of stacks
 */
-setOfStacks.prototype.popAt = function (index) {
+setOfStacks.prototype.popAt = function(index) {
 	this.stackArray[index].pop();
-	
-	for(var i = index+1; i<this.stackArray.length; i++){
+
+	for (var i = index + 1; i < this.stackArray.length; i++) {
 		var toMove = this.stackArray[i].popBottom();
-		if(toMove === null){
+		if (toMove === null) {
 			this.stackArray.splice(i, 1);
-		 	this.currentIndex--;
-		 	continue;
+			this.currentIndex--;
+			continue;
 		}
-		this.stackArray[i-1].push(toMove.data);
+		this.stackArray[i - 1].push(toMove.data);
 	}
 };
 
@@ -87,15 +87,14 @@ setOfStacks.prototype.peek = function() {
 */
 setOfStacks.prototype.toString = function() {
 	var returnString = "";
-	
-	for(var i=this.currentIndex; i>=0; i--) {
+
+	for (var i = this.currentIndex; i >= 0; i--) {
 		var node = this.stackArray[i].top;
-		while(node !== null){
-			if(node.next){
-				returnString += node.data+"-->";
-			}
-			else {
-				returnString += node.data+"...";
+		while (node !== null) {
+			if (node.next) {
+				returnString += node.data + "-->";
+			} else {
+				returnString += node.data + "...";
 			}
 			node = node.next;
 		}
@@ -107,6 +106,7 @@ setOfStacks.prototype.toString = function() {
 var mySet = new setOfStacks();
 mySet.push();
 mySet.pop();
+console.log(mySet.peek());
 console.log(mySet.toString());
 mySet.push(4);
 mySet.push(7);
@@ -136,5 +136,4 @@ mySet.push(25);
 console.log(mySet.toString());
 mySet.push(26);
 console.log(mySet.toString());
-console.log(mySet.peek());
-
+console.log(mySet.peek().toString());
