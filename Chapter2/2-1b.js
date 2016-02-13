@@ -47,7 +47,7 @@ list.append(14);
 list.append(290);
 list.append(544);
 list.append(-1);
-list.append(0);
+list.append(33);
 list.append(14);
 console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);

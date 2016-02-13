@@ -1,4 +1,3 @@
-
 /*
 Question
 Implement an algorithm to find the kth to last element of a singly linked list.
@@ -35,10 +34,12 @@ list.append(14);
 list.append(290);
 list.append(544);
 list.append(-1);
-list.append(0);
+list.append(33);
 list.append(14);
 console.log(list.toString());
 console.log(kthLastNode(list, 6));
+console.log(kthLastNode(list, 2));
+console.log(kthLastNode(list, 4));
 
 /*
 Analysis

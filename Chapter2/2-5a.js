@@ -60,10 +60,11 @@ function sumLinkedLists(a, b) {
 			}
 		}
 	}
+
 	myStack.push(carry);
 	var returnValue = 0;
 	while (myStack.length > 0) {
-		returnValue += myStack.pop() * Math.pow(10, myStack.length);
+		returnValue += myStack.pop().data * Math.pow(10, myStack.length);
 	}
 	return returnValue;
 }

@@ -1,5 +1,5 @@
 function TreeNode(data) {
-	if (!data) {
+	if (data === null || data === undefined) {
 		throw new Error("Cannot create an empty node");
 	}
 

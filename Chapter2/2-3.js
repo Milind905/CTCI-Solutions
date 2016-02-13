@@ -39,9 +39,8 @@ list.append(55);
 list.append(9090);
 list.append(5);
 console.log(list.toString());
-if (deleteNode(list.head.next.next)) {
-	console.log(list.toString());
-}
+deleteNode(list.head.next.next)
+console.log(list.toString());
 
 /*
 Analysis

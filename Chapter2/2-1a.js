@@ -17,6 +17,8 @@ function removeDuplicates(list) {
 		return;
 	}
 	var node = list.head;
+	//A better solution would be to use a hashtable
+	//None exist in javascript and my built one has a bad hash function
 	var myList = [];
 	myList.push(node.data);
 
@@ -39,7 +41,7 @@ list.append(14);
 list.append(290);
 list.append(544);
 list.append(-1);
-list.append(0);
+list.append(33);
 list.append(14);
 console.log(list.toString(), "length: ", list.length);
 removeDuplicates(list);
@@ -63,5 +65,5 @@ console.log(list.toString(), "length: ", list.length);
 /*
 Analysis
 Space complexity: O(n) where n = length of linked list
-Time complexity: O(n) - assuming indexOf is a constant time function
+Time complexity: O(n^2) beacuse index of is a linear time function
 */

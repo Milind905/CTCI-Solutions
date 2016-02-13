@@ -1,5 +1,5 @@
 function DoubleNode(d) {
-	if (!d) {
+	if (d === null || d === undefined) {
 		throw new Error("Cannot create an empty node");
 	}
 

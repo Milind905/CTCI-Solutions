@@ -1,4 +1,3 @@
-
 /*
 Question
 You have two numbers represented by a linked list, where each node contains a
@@ -48,9 +47,9 @@ function sumStacks(longer, shorter) {
 	var result = 0;
 	var length = longer.length;
 	for (var i = 0; i < length; i++) {
-		a = longer.pop();
+		a = longer.pop().data;
 		if (shorter.length > 0) {
-			b = shorter.pop();
+			b = shorter.pop().data;
 		} else {
 			b = 0;
 		}

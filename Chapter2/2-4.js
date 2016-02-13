@@ -1,4 +1,3 @@
-
 /*
 Question
 Write code to partition a linked list around a value x, such that all nodes less than
@@ -34,7 +33,7 @@ function partitionList(list, x) {
 	} else if (greaterThanList.length === 0) {
 		return lessThanList;
 	} else {
-		var endOfLessList = lessThanList.searchForNode(lessThanList.length - 1);
+		var endOfLessList = lessThanList.searchWithIndex(lessThanList.length - 1);
 		endOfLessList.next = greaterThanList.head;
 		endOfLessList.length += greaterThanList.length;
 		return lessThanList;
@@ -54,6 +53,6 @@ console.log(splitList.toString());
 
 /*
 Analysis
-Space complexity: O(N) where n is the length of the linked list
-Time complexity: O(N) where n is the length of the linked list
+Space complexity: O(n) where n is the length of the linked list
+Time complexity: O(n) where n is the length of the linked list
 */
