@@ -7,22 +7,42 @@ function HashTable(size) {
 	this.size = size;
 }
 
+/*
+Get the linear probe value given a key k and an iterator i
+Time Complexity: O(1)
+*/
 HashTable.prototype.linearProbing = function(k, i) {
 	return (this.hashFunction1(k) + i) % this.size;
 };
 
+/*
+Get the double hashed probe value given a key k and an iterator i
+Time Complexity: O(1)
+*/
 HashTable.prototype.doubleHash = function(k, i) {
 	return (this.hashFunction1(k) + i * this.hashFunction2(k)) % this.size;
 };
 
+/*
+Given a key k, return its hash value
+Time Complexity: O(1)
+*/
 HashTable.prototype.hashFunction1 = function(k) {
 	return k % this.size;
 };
 
+/*
+Given a key k, return its hash2 value
+Time Complexity: O(1)
+*/
 HashTable.prototype.hashFunction2 = function(k) {
 	return k % (this.size - 1);
 };
 
+/*
+Given a key k, insert it into the hash table
+Time complexity: O(m) where m is the size of the hash table
+*/
 HashTable.prototype.hashInsert = function(k) {
 	var i = 0;
 	var j;
@@ -40,6 +60,10 @@ HashTable.prototype.hashInsert = function(k) {
 	throw new Error("Table is already full");
 };
 
+/*
+Given a key k, find its position in the hash table
+Time Complexity: O(m) where m is the size of the hash table
+*/
 HashTable.prototype.hashSearch = function(k) {
 	var i = 0;
 	var j;
@@ -58,6 +82,10 @@ HashTable.prototype.hashSearch = function(k) {
 	return null;
 };
 
+/*
+Given a key k, find if it exists in the hash table then delete it
+Time Complexity: O(m) where m is the size of the hash table
+*/
 HashTable.prototype.hashDelete = function(k) {
 	var i = 0;
 	var j;
@@ -66,17 +94,21 @@ HashTable.prototype.hashDelete = function(k) {
 		j = this.doubleHash(k, i);
 		if (this.myValues[j] === k) {
 			this.myValues[j] = DELETED;
-			return true;
+			return j;
 		} else if (this.myValues[j] === null) {
-			return false;
+			return null;
 		} else {
 			i++;
 		}
 	}
 
-	return false;
+	return null;
 };
 
+/*
+Print the hash table in an easy to read format
+Time Complexity: O(m) where m is the size of the hash table
+*/
 HashTable.prototype.toString = function() {
 	var returnString = "";
 
@@ -88,7 +120,7 @@ HashTable.prototype.toString = function() {
 };
 
 
-var myHashTable = new HashTable(13);
+/*var myHashTable = new HashTable(13);
 console.log("Insert: " + myHashTable.hashInsert(12));
 console.log("Insert: " + myHashTable.hashInsert(25));
 console.log("Insert: " + myHashTable.hashInsert(26));
@@ -119,4 +151,4 @@ console.log("Delete: 1080 " + myHashTable.hashDelete(1080));
 console.log(myHashTable.toString());
 
 console.log("Insert: " + myHashTable.hashInsert(11));
-console.log(myHashTable.toString());
+console.log(myHashTable.toString());*/

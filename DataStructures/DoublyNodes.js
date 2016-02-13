@@ -8,10 +8,18 @@ function DoubleNode(d) {
 	this.data = d;
 }
 
+/*
+Returns the node in an easy to read format
+Time Complexity: O(1)
+*/
 DoubleNode.prototype.toString = function() {
 	return "[" + this.data + "]";
 };
 
+/*
+Checks if a this node is equal to another node
+Time Complexity: O(1)
+*/
 DoubleNode.prototype.equals = function(node) {
 	if (this.data !== node.data) {
 		return false;

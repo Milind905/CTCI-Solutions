@@ -1,5 +1,5 @@
 function Node(d) {
-	if (d === null || d === undefined) {
+	if (!d) {
 		throw new Error("Cannot create an empty node");
 	}
 
@@ -7,10 +7,18 @@ function Node(d) {
 	this.data = d;
 }
 
+/*
+Returns the node in an easy to read format
+Time Complexity: O(1)
+*/
 Node.prototype.toString = function() {
 	return "[" + this.data + "]";
 };
 
+/*
+Checks if a this node is equal to another node
+Time Complexity: O(1)
+*/
 Node.prototype.equals = function(node) {
 	if (this.next !== node.next) {
 		return false;

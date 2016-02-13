@@ -5,11 +5,11 @@ function BinarySearchTree() {
 	this.root = null;
 }
 
+/*
+Insert a node into the BST
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.insert = function(data) {
-	if (data === null || data === undefined) {
-		return;
-	}
-
 	var addNode = new TreeNode(data);
 	var node = this.root;
 	var parent = null;
@@ -35,9 +35,13 @@ BinarySearchTree.prototype.insert = function(data) {
 	addNode.parent = parent;
 };
 
+/*
+Find a node given its value
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.search = function(k) {
 	if (this.root === null) {
-		return false;
+		return null;
 	}
 
 	var node = this.root;
@@ -48,70 +52,119 @@ BinarySearchTree.prototype.search = function(k) {
 			node = node.right;
 		}
 	}
-	if (node === null) {
-		return false;
-	} else {
-		return true;
-	}
+
+	return node;
 };
 
+/*
+Return the minimum value in the BST
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.getMin = function(node) {
+	if (!this.root) {
+		return null;
+	}
+
+	if (!node) {
+		node = this.root;
+	}
+
 	while (node.left !== null) {
 		node = node.left;
 	}
 	return node;
 };
 
+/*
+Return the maximum value in the BST
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.getMax = function(node) {
+	if (!this.root) {
+		return null;
+	}
+
+	if (!node) {
+		node = this.root;
+	}
+
 	while (node.right !== null) {
 		node = node.right;
 	}
 	return node;
 };
 
+/*
+Print the tree using in order traversal (Left -> Node -> Right)
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.inOrderTraversal = function(node) {
-	if (node === null || node === undefined) {
+	if (!node) {
 		return;
 	} else {
 		this.inOrderTraversal(node.left);
-		console.log(node.data + "->");
+		console.log(node.toString());
 		this.inOrderTraversal(node.right);
 	}
 };
 
+/*
+Print the tree using in order traversal without recursion(Left -> Node -> Right)
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.inOrderTraversalNoRecursion = function() {
-	if(this.root === null) {
+	if (this.root === null) {
 		return "EMPTY";
 	}
 
 	var node = this.root;
-	while(node !== null) {
-		if(node.left && !node.left.travelled) {
+	while (node !== null) {
+		node.travelled = false;
+		if (node.left && node.left.travelled) {
 			node = node.left;
-			continue;
-		}
-		if(!node.travelled) {
-			console.log(node.data);
-			node.travelled = true;
-		}
-		if(node.right && !node.right.travelled) {
+		} else if (node.right && node.right.travelled) {
 			node = node.right;
 		} else {
 			node = node.parent;
 		}
 	}
-}
+	node = this.root;
 
+	while (node !== null) {
+		if (node.left && !node.left.travelled) {
+			node = node.left;
+			continue;
+		}
+		if (!node.travelled) {
+			console.log(node.toString());
+			node.travelled = true;
+		}
+		if (node.right && !node.right.travelled) {
+			node = node.right;
+		} else {
+			node = node.parent;
+		}
+	}
+};
+
+/*
+Print the tree using pre order traversal (Node -> Left -> Right)
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.preOrderTraversal = function(node) {
-	if (node === null) {
+	if (!node) {
 		return;
 	} else {
-		console.log(node.data + "->");
+		console.log(node.toString());
 		this.preOrderTraversal(node.left);
 		this.preOrderTraversal(node.right);
 	}
 };
 
+/*
+Print the tree using pre order traversal without recursion (Node -> Left -> Right)
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.preOrderTraversalNoRecursion = function() {
 	if (this.root === null) {
 		return "EMPTY";
@@ -119,76 +172,124 @@ BinarySearchTree.prototype.preOrderTraversalNoRecursion = function() {
 
 	var node = this.root;
 	while (node !== null) {
-		if (!node.printed) {
-			console.log(node.data);
-			node.printed = true;
+		node.travelled = false;
+		if (node.left && node.left.travelled) {
+			node = node.left;
+		} else if (node.right && node.right.travelled) {
+			node = node.right;
+		} else {
+			node = node.parent;
+		}
+	}
+	node = this.root;
+
+	while (node !== null) {
+		if (!node.travelled) {
+			console.log(node.toString());
+			node.travelled = true;
 		}
 
-		if (node.left && !node.left.printed) {
+		if (node.left && !node.left.travelled) {
 			node = node.left;
-		}
-		else if(node.right && !node.right.printed) {
+		} else if (node.right && !node.right.travelled) {
 			node = node.right;
-		}
-		else {
+		} else {
 			node = node.parent;
 		}
 	}
 };
 
+/*
+Print the tree using post order traversal (Left -> Right -> Node)
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.postOrderTraversal = function(node) {
-	if (node === null) {
+	if (!node) {
 		return;
 	} else {
 		this.postOrderTraversal(node.left);
 		this.postOrderTraversal(node.right);
-		console.log(node.data + "->");
+		console.log(node.toString());
 	}
 };
 
+/*
+Print the tree using post order traversal without recursion (Left -> Right -> Node)
+Time Complexity: O(n)
+*/
 BinarySearchTree.prototype.postOrderTraversalNoRecursion = function() {
 	if (this.root === null) {
 		return "EMPTY";
 	}
 
 	var node = this.root;
-	var myStack = new Stack();
 	while (node !== null) {
-		myStack.push(node.data);
-		if (node.left !== null && !node.left.traveled) {
+		node.travelled = false;
+		if (node.left && node.left.travelled) {
 			node = node.left;
-		} else if (node.right !== null && !node.right.traveled) {
+		} else if (node.right && node.right.travelled) {
 			node = node.right;
 		} else {
-			console.log(myStack.pop());
-			node.traveled = true;
+			node = node.parent;
+		}
+	}
+	node = this.root;
+
+	while (node !== null) {
+		if (node.left !== null && !node.left.travelled) {
+			node = node.left;
+		} else if (node.right !== null && !node.right.travelled) {
+			node = node.right;
+		} else {
+			console.log(node.toString());
+			node.travelled = true;
 			node = node.parent;
 		}
 	}
 };
 
-BinarySearchTree.prototype.getSuccessor = function(node) {
+/*
+Find the successor of a node
+Time Complexity: O(n)
+*/
+BinarySearchTree.prototype.getSuccessor = function(k) {
+	var node = this.search(k);
+	if (!node || !k) {
+		return null;
+	}
+
+	//If it has a right subtree, get the smallest value in right subtree
 	if (node.right !== null) {
 		return this.getMin(node.right);
 	}
 
-	var parent;
+	//Otherwise find the first ancestor that has the node in its left subtree
+	var parent = null;
 	while (node !== null) {
 		parent = node.parent;
 		if (!parent) {
-			break;
+			return null;
 		}
 		if (parent.left.equals(node)) {
-			break;
+			return parent;
 		} else {
 			node = parent;
-			parent = parent.parent;
 		}
 	}
-	return parent;
+	return null;
 };
 
-BinarySearchTree.prototype.getPredecessor = function(node) {
+/*
+Find the predecessor of a node
+Time Complexity: O(n)
+*/
+BinarySearchTree.prototype.getPredecessor = function(k) {
+	var node = this.search(k);
+	if (!node || !k) {
+		return null;
+	}
+
+	//If it has a left subtree, get the largest value in its left subtree
 	if (node.left !== null) {
 		return this.getMax(node.left);
 	}
@@ -197,63 +298,82 @@ BinarySearchTree.prototype.getPredecessor = function(node) {
 	while (node !== null) {
 		parent = node.parent;
 		if (!parent) {
-			break;
+			return null;
 		}
 		if (parent.right.equals(node)) {
-			break;
+			return parent;
 		} else {
 			node = parent;
 			parent = parent.parent;
 		}
 	}
-	return parent;
+	return null;
 };
 
-BinarySearchTree.prototype.delete = function(z) {
-	if (!z) {
-		return;
+/*
+Delete a node given its value
+Time Complexity: O(n)
+*/
+BinarySearchTree.prototype.delete = function(k) {
+	if (!k) {
+		throw new Error("Invalid input value");
 	}
 
+	var z = this.search(k);
+	if (!z) {
+		return null;
+	}
+
+	//If z has two children, get its successor (must exist b/c z has a right subtree)
 	if (z.left !== null && z.right !== null) {
-		var y = this.getSuccessor(z);
+		var y = this.getSuccessor(z.data);
+		//If z is not the direct parent of y then swap y with its own right child
+		//y will never have a left child (b/c y is the successor)
 		if (!(z.equals(y.parent))) {
 			switchNodes(this, y, y.right);
 			y.right = z.right;
 			y.right.parent = y;
 		}
+		//Swap y and z, giving y the left subtree of z
 		switchNodes(this, z, y);
 		y.left = z.left;
 		y.left.parent = y;
-	} else if (z.left === null && z.right === null) {
+	}
+	//If z has no children, then simply set its parent pointer to null
+	else if (z.left === null && z.right === null) {
 		var y = z.parent;
 		if (!y) {
-			z = null;
-			return;
-		}
-		if (z.equals(y.left)) {
+			this.root = null;
+		} else if (y.left && z.equals(y.left)) {
 			y.left = null;
 		} else {
 			y.right = null;
 		}
-	} else if (z.left === null) {
+	}
+	//If z has only a right child, swap it with its right child
+	else if (z.left === null) {
 		switchNodes(this, z, z.right);
-	} else {
+	}
+	//If z has only a left child, swap it with its left child
+	else {
 		switchNodes(this, z, z.left);
 	}
+
+	return z;
 };
 
-BinarySearchTree.prototype.toString = function() {
-	if (this.root === null) {
-		console.log("EMPTY");
-	} else {
-		this.inOrderTraversal(this.root);
-	}
-};
-
+/*
+Helper function to swap two nodes  
+Time Complexity: O(1)
+*/
 function switchNodes(Tree, u, v) {
 	if (u.parent === null) {
-		Tree.root = null;
-		return;
+		if (v) {
+			Tree.root = v;
+		} else {
+			Tree.root = null;
+			return;
+		}
 	} else if (u.equals(u.parent.left)) {
 		u.parent.left = v;
 	} else {
@@ -264,12 +384,26 @@ function switchNodes(Tree, u, v) {
 	}
 }
 
+/*
+Prints the tree in an easy to read format
+Time Complexity: O(n)
+*/
+BinarySearchTree.prototype.toString = function() {
+	if (this.root === null) {
+		console.log("EMPTY");
+	} else {
+		this.inOrderTraversal(this.root);
+	}
+};
+
 module.exports = BinarySearchTree;
 
-/*
-var myTree = new BinarySearchTree();
+
+/*var myTree = new BinarySearchTree();
 console.log("PRINTING MY TREE");
 myTree.toString();
+//myTree.delete();
+console.log(myTree.delete(15));
 myTree.insert(15);
 myTree.insert(8);
 myTree.insert(25);
@@ -282,9 +416,9 @@ myTree.insert(20);
 myTree.insert(36);
 console.log("PRINTING MY TREE");
 myTree.toString();
-console.log("Tree min: ", myTree.getMin(myTree.root).data);
-console.log("Tree max: ", myTree.getMax(myTree.root).data);
-console.log("Search 10: ", myTree.search(10));
+console.log("Tree min: ", myTree.getMin(myTree.root).toString());
+console.log("Tree max: ", myTree.getMax(myTree.root).toString());
+console.log("Search 10: ", myTree.search(10).toString());
 console.log("Search 21: ", myTree.search(21));
 console.log("IN ORDER TRAVERSAL");
 myTree.inOrderTraversal(myTree.root);
@@ -298,48 +432,59 @@ console.log("POST ORDER TRAVERSAL");
 myTree.postOrderTraversal(myTree.root);
 console.log("POST ORDER TRAVERSAL NO RECURSION");
 myTree.postOrderTraversalNoRecursion();
-console.log("Successor to root: ", myTree.getSuccessor(myTree.root).data);
-console.log("Successor to 6: ", myTree.getSuccessor(myTree.root.left.left).data);
-console.log("Predecessor to root: ", myTree.getPredecessor(myTree.root).data);
-console.log("Predecessor to 20: ", myTree.getPredecessor(myTree.root.right.left).data);
-console.log("Predecessor to 11: ", myTree.getPredecessor(myTree.root.left.right.right).data);
+console.log("Successor to root: ", myTree.getSuccessor(15).toString());
+console.log("Successor to 6: ", myTree.getSuccessor(6).toString());
+console.log("Successor to 10: ", myTree.getSuccessor(10).toString());
+console.log("Predecessor to root: ", myTree.getPredecessor(15).toString());
+console.log("Predecessor to 20: ", myTree.getPredecessor(20).toString());
+console.log("Predecessor to 11: ", myTree.getPredecessor(11).toString());
 console.log("Delete node 6: ");
-myTree.delete(myTree.root.left.left);
+myTree.delete(6);
 console.log("PRINTING MY TREE");
 myTree.toString();
 
 console.log("Delete node 4: ");
-myTree.delete(myTree.root.left.left);
+myTree.delete(4);
 console.log("PRINTING MY TREE");
 myTree.toString();
 
 console.log("Delete node 8: ");
-myTree.delete(myTree.root.left);
+myTree.delete(8);
 console.log("PRINTING MY TREE");
 myTree.toString();
 
 console.log("Delete node 25: ");
-myTree.delete(myTree.root.right);
+myTree.delete(25);
 console.log("PRINTING MY TREE");
 myTree.toString();
 
-var myTree = new BinarySearchTree();
-myTree.insert(15);
-myTree.insert(8);
-myTree.insert(25);
-myTree.insert(6);
-myTree.insert(4);
-myTree.insert(13);
-myTree.insert(10);
-myTree.insert(11);
-myTree.insert(20);
-myTree.insert(36);
+console.log("Delete node 15: ");
+myTree.delete(15);
+console.log("PRINTING MY TREE");
+myTree.toString();
+console.log("Current root: ", myTree.root.toString());
+
+console.log("Delete node 36: ");
+myTree.delete(36);
 console.log("PRINTING MY TREE");
 myTree.toString();
 
-
-console.log("Delete node 8: ");
-myTree.delete(myTree.root.left);
+console.log("Delete node 10: ");
+myTree.delete(10);
 console.log("PRINTING MY TREE");
 myTree.toString();
-*/
+
+console.log("Delete node 14: ");
+myTree.delete(14);
+console.log("PRINTING MY TREE");
+myTree.toString();
+
+console.log("Delete node 20: ");
+myTree.delete(20);
+console.log("PRINTING MY TREE");
+myTree.toString();
+
+console.log("Delete node 11: ");
+myTree.delete(11);
+console.log("PRINTING MY TREE");
+myTree.toString();*/

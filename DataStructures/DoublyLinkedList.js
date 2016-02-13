@@ -27,60 +27,88 @@ DoublyLinkedList.prototype.append = function(data) {
 
 /*
 Remove a node from the list given its value
-Time Complexity: O(length)
+Time Complexity: O(n)
 */
 DoublyLinkedList.prototype.remove = function(data) {
+	if (!data) {
+		throw new Error("No input data");
+	}
+
 	if (this.head === null || this.tail === null) {
 		return null;
 	}
 
-	//This looks ugly AF, will refactor later
 	var toRemove = null;
 	if (this.head.data === data) {
 		toRemove = this.head;
 		this.head = this.head.next;
-		if (this.head === null) {
-			this.tail = null;
-		} else {
+		if (this.head) {
 			this.head.prev = null;
 		}
-	} else if (this.tail.data === data) {
+	}
+	if (this.tail.data === data) {
 		toRemove = this.tail;
 		this.tail = this.tail.prev;
-		if (this.tail === null) {
-			this.head = null;
-		} else {
+		if (this.tail) {
 			this.tail.next = null;
 		}
 	} else {
 		var node = this.head;
-		while (node !== null) {
-			if (node.data === data) {
-				toRemove = node;
-				var prevNode = node.prev;
-				var nextNode = node.next;
-				prevNode.next = nextNode;
-				nextNode.prev = prevNode;
-			}
+		while (node !== null && node.data !== data) {
 			node = node.next;
+		}
+		if (node) {
+			toRemove = node;
+			var prevNode = node.prev;
+			var nextNode = node.next;
+			prevNode.next = nextNode;
+			nextNode.prev = prevNode;
 		}
 	}
 
-	this.length--;
-	if (toRemove !== null) {
-		return toRemove.data;
+	if (toRemove) {
+		this.length--;
+		return toRemove;
 	} else {
 		return null;
 	}
 };
 
 /*
-Search for a node based on its position (0-based) and return its data
-Time Complexity: O(length)
+Search for a node based on its data, return node
+Time Complexity: O(n)
 */
-DoublyLinkedList.prototype.searchForNode = function(position) {
-	if (position < 0 || position >= this.length) {
-		throw new Error("Invalid position");
+DoublyLinkedList.prototype.search = function(data) {
+	if (!data) {
+		throw new Error("No data specified");
+	}
+
+	var node = this.head;
+	if (!node) {
+		return null;
+	}
+	while (node !== null) {
+		if (node.data === data) {
+			return node;
+		}
+		node = node.next;
+	}
+
+	return null;
+};
+
+
+/*
+Search for a node based on its position (0-based) and return its data
+Time Complexity: O(n)
+*/
+DoublyLinkedList.prototype.searchWithIndex = function(position) {
+	if (position === undefined || position === null || position < 0) {
+		throw new Error("Position must be a positive integer");
+	}
+
+	if (position >= this.length) {
+		return null;
 	}
 
 	var node = this.head;
@@ -92,7 +120,7 @@ DoublyLinkedList.prototype.searchForNode = function(position) {
 
 /*
 Print the LinkedList in an easy to read format
-Time Complexity: O(length)
+Time Complexity: O(n)
 */
 DoublyLinkedList.prototype.toString = function() {
 	var node = this.head;
@@ -115,29 +143,39 @@ DoublyLinkedList.prototype.toString = function() {
 module.exports = DoublyLinkedList;
 
 
-var myDoublyLinkedList = new DoublyLinkedList();
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.append(20);
-myDoublyLinkedList.append(50);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(50);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(20);
-console.log(myDoublyLinkedList.toString());
-
-myDoublyLinkedList.append(30);
-myDoublyLinkedList.append(24);
-myDoublyLinkedList.append(54);
-myDoublyLinkedList.append(87);
-myDoublyLinkedList.append(12);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(24);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(54);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(12);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(87);
-console.log(myDoublyLinkedList.toString());
-myDoublyLinkedList.remove(30);
-console.log(myDoublyLinkedList.toString());
+/*var myList = new DoublyLinkedList();
+console.log(myList.toString());
+console.log(myList.toString());
+console.log(myList.search(12));
+console.log(myList.searchWithIndex(12));
+console.log(myList.remove(6));
+//console.log(myList.remove())
+//console.log(myList.search());
+//console.log(myList.searchWithIndex());
+//console.log(myList.searchWithIndex(-2));
+myList.append(12);
+myList.append(21);
+myList.append(13);
+myList.append(11);
+myList.append(7);
+console.log(myList.toString());
+console.log(myList.search(22));
+console.log(myList.search(12).toString());
+console.log(myList.search(7).toString());
+console.log(myList.search(13).toString());
+console.log(myList.searchWithIndex(0).toString());
+console.log(myList.searchWithIndex(myList.length-1).toString());
+console.log(myList.searchWithIndex(3).toString());
+console.log(myList.toString());
+console.log(myList.remove(7).toString());
+console.log(myList.remove(12).toString());
+console.log(myList.remove(11).toString());
+console.log(myList.remove(13).toString());
+console.log(myList.remove(21).toString());
+console.log(myList.toString());
+myList.append(12);
+myList.append(21);
+myList.append(13);
+myList.append(11);
+myList.append(7);
+console.log(myList.toString());*/
