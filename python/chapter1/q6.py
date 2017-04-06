@@ -2,8 +2,6 @@ import sys
 sys.path.insert(0, '../test')
 from expect import expect
 
-
-#TODO: Use list comprehension
 def string_compression(input):
     string_comp_array = []
     cur_count = 1

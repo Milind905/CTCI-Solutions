@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, '../test')
 from expect import expect
 
-# Case Sensitive? Dunno, assuming for now yes
+# Assuming case-sensitive
 def isOneEditAway(input1, input2):
     input_len_diff = len(input1) - len(input2)
     if input_len_diff < -1 or input_len_diff > 1:

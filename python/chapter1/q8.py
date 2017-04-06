@@ -1,4 +1,3 @@
-
 def zero_matrix(matrix):
     print "Initial Matrix"
     print_matrix(matrix)
