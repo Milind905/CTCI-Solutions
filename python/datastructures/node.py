@@ -4,6 +4,13 @@ class BinaryNode:
         self.left = left
         self.right = right
 
+class BinaryNodeWithParent:
+     def __init__(self, value, parent=None, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+        self.parent = parent
+
 class GraphNode:
     def __init__(self, value, adjacent=[]):
         self.value = value
