@@ -1,10 +1,6 @@
 
-# Only thing that changes is the order of left and right children
-# At leaf, cannot change array -> return 1 array of 1 node (itself)
-# At leaf + 1 level: max change of 2 items (if left and right.) -> return array variations
-# At leaf + 2 level ... swap left subtree and right subtree in array -> return array variations
-# Not sure if this is correct!
 # Can everything on left be swapped with everything on right? doesn't the orders in left and right need to stay the same cause one node might be the root? ..
+# Not completely correct, can swap left and right inter-elements as well.
 
 import sys
 sys.path.insert(0, '../datastructures')
@@ -42,6 +38,17 @@ def array_variations(root):
   return list_of_arrays
 
 def main():
+  root = BinaryNode(50)
+  root.left = BinaryNode(20)
+  root.left.left = BinaryNode(10)
+  root.left.right = BinaryNode(25)
+  root.left.left.left = BinaryNode(5)
+  root.left.left.right = BinaryNode(15)
+  root.right = BinaryNode(60)
+  root.right.right = BinaryNode(70)
+  root.right.right.left = BinaryNode(65)
+  root.right.right.right = BinaryNode(80)
+  print_binary_tree(root)
 
 
 if __name__ == '__main__':
